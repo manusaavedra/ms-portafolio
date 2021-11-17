@@ -4,7 +4,7 @@ export default function Navigation() {
     return (
         <header>
             <h5>/manusaavedra</h5>
-            <nav>
+            <nav className="hidden-sm">
                 <ul>
                     <li>
                         <ActiveLink activeClassName="active" href="/">
@@ -18,7 +18,7 @@ export default function Navigation() {
                     </li>
                 </ul>
             </nav>
-            <button className="secondary">Descargar Curriculum</button>
+            <button className="secondary hidden-sm ">Descargar Curriculum</button>
         </header>
     )
 }

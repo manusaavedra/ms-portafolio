@@ -43,7 +43,7 @@ export default function Home() {
                 </button>
               </a>
             </div>
-            <div className="item-image">
+            <div className="items-image">
               <Image src="/project-1.png" width={587} height={390} alt="manuel saavedra avatar" />
             </div>
           </article>
