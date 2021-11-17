@@ -10,7 +10,8 @@ export default function Home() {
       <Head>
         <title>Manuel Saavedra</title>
         <meta name="description" content="Bienvenido a mi humilde espacio" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="logo-default.svg" />
+        <meta name="viewport" content="viewport-fit=cover" />
       </Head>
       <main>
         <Navigation />
@@ -81,7 +82,7 @@ export default function Home() {
         <section className="skills">
           <article className="skills-content">
             <h4>Algunas Habilidades</h4>
-            <Image src="/skills.svg" width={578} height={300} alt="manuel saavedra avatar" />
+            <Image src="/skills.svg" width={578} height={300} priority alt="manuel saavedra avatar" />
           </article>
         </section>
         <Footer />

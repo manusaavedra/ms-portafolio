@@ -8,7 +8,7 @@ export default function Navigation() {
 
     return (
         <header>
-            <h5>/manusaavedra</h5>
+            <Image src="/logo-fulltext-default.svg" width={282} height={35} alt="logo" />
             <div className={`navbar ${toggle ? 'open' : ''}`}>
                 <nav>
                     <ul>
