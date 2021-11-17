@@ -63,6 +63,7 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   background-color: var(--white);
   padding: 15px 120px;
   position: sticky;
@@ -79,6 +80,19 @@ header ul {
   gap: 15px
 }
 
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 70%;
+  transition: .5s ease-in-out;
+}
+
+.toogle-menu-action {
+  display: none;
+}
+
 header ul li a {
   padding: 10px 15px;
   border-radius: 30px;
@@ -91,7 +105,7 @@ header ul li a:hover,
 header ul li a.active {
   background-color: var(--primary-color);
   color: var(--black);
-}
+} 
 
 footer {
   display: flex;
@@ -226,6 +240,37 @@ button.secondary {
 }
 
 @media (max-width: 800px) {
+
+  .navbar {
+    position: fixed;
+    top: 90px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 40px 0;
+    background-color: var(--white);
+    box-shadow: 0px 19px 8px 0px rgb(0 0 0 / 5%);
+    transform: translateY(-320px);
+    opacity: 0;
+    z-index: -99;
+  }
+
+  .navbar.open {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+
+  .toogle-menu-action {
+    display: block;
+  }
+
+  .navbar nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
 
   .presentation > span {
     max-width: 200px !important;
