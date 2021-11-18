@@ -246,7 +246,7 @@ button.secondary {
 
   .navbar {
     position: fixed;
-    top: 90px;
+    top: 85px;
     left: 0;
     width: 100%;
     display: flex;
