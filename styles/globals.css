@@ -84,9 +84,8 @@ header ul {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   width: 70%;
-  transition: .5s ease-in-out;
 }
 
 .toogle-menu-action {
@@ -174,6 +173,10 @@ button.secondary {
   text-align: center;
 }
 
+.signal h5 {
+  margin: 15px 0;
+}
+
 .projects,
 .skills {
   width: 75%;
@@ -255,10 +258,12 @@ button.secondary {
     transform: translateY(-320px);
     opacity: 0;
     z-index: -99;
+    transition: .2s ease-in-out;
   }
 
   .navbar.open {
     transform: translateY(0px);
+    height: calc(100vh - 60px);
     opacity: 1;
   }
 
@@ -304,7 +309,6 @@ button.secondary {
 
   h5 {
     font-size: 18px;
-    margin: 4px 0;
   }
 
   :root {

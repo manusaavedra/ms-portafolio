@@ -5,6 +5,16 @@ import SocialIcons from '../components/SocialIcons'
 import Footer from '../components/Footer'
 
 export default function Home() {
+
+  function scrollVisibleArea(selector) {
+    let section = document.querySelector(selector);
+    section.scrollIntoView({
+      block: 'start',
+      behavior: 'instant',
+      inline: 'start'
+    });
+  }
+
   return (
     <div>
       <Head>
@@ -15,7 +25,7 @@ export default function Home() {
       <main>
         <Navigation />
         <section className="presentation">
-          <Image src="/avatar.png" width={331} height={320} alt="manuel saavedra avatar" />
+          <Image src="/avatar.png" loading="lazy" width={331} height={320} alt="manuel saavedra avatar" />
           <div className="presentation-content">
             <div>
               <h4 className="text-primary">HOLA 👋🏼, SOY</h4>
@@ -26,10 +36,10 @@ export default function Home() {
           </div>
         </section>
         <div className="signal">
-          <a href="#projects">
-            <h5>Aquí tienes algunos proyectos que te quiero compartir.</h5>
-            <Image src="/arrow-down-icon.svg" width={24} height={24} alt="arrow down icon" />
-          </a>
+          <h5>Aquí tienes algunos proyectos que te quiero compartir.</h5>
+          <button onClick={() => scrollVisibleArea("#projects")}>
+            <Image src="/arrow-down-icon.svg" loading="lazy" width={24} height={24} alt="arrow down icon" />
+          </button>
         </div>
         <section className="projects" id="projects">
           <article className="projects-items">
@@ -44,7 +54,7 @@ export default function Home() {
               </a>
             </div>
             <div className="items-image">
-              <Image src="/project-1.png" width={587} height={390} alt="manuel saavedra avatar" />
+              <Image src="/project-1.png" loading="lazy" width={587} height={390} alt="manuel saavedra avatar" />
             </div>
           </article>
           <article className="projects-items">
@@ -59,7 +69,7 @@ export default function Home() {
               </a>
             </div>
             <div className="item-image">
-              <Image src="/project-2.png" width={587} height={390} alt="manuel saavedra avatar" />
+              <Image src="/project-2.png" loading="lazy" width={587} height={390} alt="manuel saavedra avatar" />
             </div>
           </article>
           <article className="projects-items">
@@ -74,18 +84,18 @@ export default function Home() {
               </a>
             </div>
             <div className="item-image">
-              <Image src="/project-3.png" width={587} height={390} alt="manuel saavedra avatar" />
+              <Image src="/project-3.png" loading="lazy" width={587} height={390} alt="manuel saavedra avatar" />
             </div>
           </article>
         </section>
         <section className="skills">
           <article className="skills-content">
             <h4>Algunas Habilidades</h4>
-            <Image src="/skills.svg" width={578} height={300} priority alt="manuel saavedra avatar" />
+            <Image src="/skills.svg" loading="lazy" width={578} height={300} alt="manuel saavedra avatar" />
           </article>
         </section>
-        <Footer />
       </main>
+      <Footer />
     </div>
   )
 }
