@@ -12,6 +12,7 @@ datasource db {
 model Projects {
   id          String       @id @default(dbgenerated()) @map("_id") @db.ObjectId
   title       String
+  photoURL    String
   description String
   url         String
   categoryIDs String[]     @db.Array(ObjectId)

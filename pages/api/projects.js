@@ -5,17 +5,17 @@ export default async function handler(req, res) {
     let method = req.method
     const prisma = new PrismaClient()
 
-
     switch (method) {
         case 'POST': {
 
-            let { title, description, categories, url } = req.body
+            let { title, description, categories, photoURL, url } = req.body
     
             try {
                 
                 const post = await prisma.projects.create({
                     data: {
                         title: title,
+                        photoURL: photoURL,
                         description: description,
                         categories: {
                             connect: categories
@@ -38,7 +38,7 @@ export default async function handler(req, res) {
 
         case 'PUT': {
 
-            let { id, title, description, categoryIDs, url } = req.body
+            let { id, title, description, photoURL, categoryIDs, url } = req.body
     
             try {
                 
@@ -48,6 +48,7 @@ export default async function handler(req, res) {
                     },
                     data: {
                         title: title,
+                        photoURL: photoURL,
                         description: description,
                         url: url,
                         categoryIDs: categoryIDs
@@ -112,6 +113,4 @@ export default async function handler(req, res) {
         }
 
     }
-
-
 }
