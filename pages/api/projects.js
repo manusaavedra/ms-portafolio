@@ -1,26 +1,117 @@
-import {PrismaClient} from '@prisma/client'
+import { PrismaClient } from '@prisma/client'
 
 export default async function handler(req, res) {
-    const prisma = new PrismaClient()
-    const post = await prisma.projects.create({
-        data: {
-            title: 'Sequentracks',
-            description: 'Reproductor multitrack para músicos.',
-            categories: {
-                connect: [
-                    {
-                        id:'61959cecb1136ce310a91287'
-                    },
-                    {
-                        id: '61959d2eb1136ce310a9128b'
-                    }
-                ]
-            },
-            url: 'https://multitrackapp.netlify.app/player'
-        }
-    })
 
-    res.status(200).send({
-        data: post
-    })
+    let method = req.method
+    const prisma = new PrismaClient()
+
+
+    switch (method) {
+        case 'POST': {
+
+            let { title, description, categories, url } = req.body
+    
+            try {
+                
+                const post = await prisma.projects.create({
+                    data: {
+                        title: title,
+                        description: description,
+                        categories: {
+                            connect: categories
+                        },
+                        url: url
+                    }
+                })
+        
+                return res.status(200).send({
+                    data: post
+                })
+
+            } catch (error) {
+                return res.status(500).send({
+                    error: error,
+                    message: 'No se pudo crear el proyecto.'
+                })
+            }
+        }
+
+        case 'PUT': {
+
+            let { id, title, description, categoryIDs, url } = req.body
+    
+            try {
+                
+                const post = await prisma.projects.update({
+                    where: {
+                        id: id
+                    },
+                    data: {
+                        title: title,
+                        description: description,
+                        url: url,
+                        categoryIDs: categoryIDs
+                    }
+                })
+        
+                return res.status(200).send({
+                    data: post
+                })
+
+            } catch (error) {
+                return res.status(500).send({
+                    error: error,
+                    message: 'No se pudo actualizar el proyecto'
+                })
+            }
+        }
+
+        case 'DELETE': {
+
+            let { id } = req.body
+    
+            try {
+
+                const post = await prisma.projects.delete({
+                    where: {
+                        id: id
+                    }
+                })
+
+                return res.status(200).send({
+                    data: post
+                })
+
+            } catch (error) {
+                return res.status(500).send({
+                    error: error,
+                    message: 'No se puedo eliminar el proyecto'
+                })
+            }
+        }
+
+        case "GET": {
+
+            try {
+                let post = await prisma.projects.findMany({
+                    include: {
+                        categories: true
+                    }
+                })
+
+                return res.status(200).send({
+                    data: post
+                })
+
+            } catch (error) {
+                return res.status(500).send({
+                    error: error,
+                    message: 'ha ocurrido un error al obtener los datos'
+                })
+            }
+        }
+
+    }
+
+
 }

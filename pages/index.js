@@ -20,7 +20,6 @@ export default function Home() {
       <Head>
         <title>Manuel Saavedra</title>
         <meta name="description" content="Bienvenido a mi humilde espacio" />
-        <link rel="icon" href="logo-default.svg" />
       </Head>
       <main>
         <Navigation />
