@@ -2,7 +2,7 @@ import Head from "next/head"
 import { useEffect, useState } from "react"
 import Image from 'next/image'
 import Navigation from "../components/Navigation"
-import { PrismaClient } from ".prisma/client"
+import { PrismaClient } from "@prisma/client"
 
 export default function Projects({ projects }) {
 
@@ -64,7 +64,7 @@ export default function Projects({ projects }) {
     )
 }
 
-Projects.getInitialProps = async (ctx) => {
+export const getServerSideProps = async (ctx) => {
 
     const prisma = new PrismaClient()
 
@@ -75,6 +75,8 @@ Projects.getInitialProps = async (ctx) => {
     })
 
     return {
-        projects: post
+        props: {
+            projects: post
+        }
     }
 }
