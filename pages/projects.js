@@ -12,7 +12,7 @@ export default function Projects({ projects }) {
         setState(projects.data)
     }, [projects])
 
-    const CategoryItems = ({categories}) => {
+    const CategoryItems = ({ categories }) => {
         return (
             <ul className="tags">
                 {
@@ -31,15 +31,19 @@ export default function Projects({ projects }) {
         console.log(state)
 
         return (
-            <section>
+            <section className="grid-projects projects-section">
                 {
                     state.map((project) => {
                         return (
                             <article key={project.id}>
-                                <Image src={`${project.photoURL}`} width={300} height={200} alt={project.title} />
-                                <h5>{project.title}</h5>
-                                <p>{project.description}</p>
-                                <CategoryItems categories={project.categories} />
+                                <a href={project.url} target="_blank" rel="noreferrer" >
+                                    <Image src={`${project.photoURL}`} layout="responsive" width={810} height={540} alt={project.title} />
+                                    <div className="grid-items-content">
+                                        <h5>{project.title}</h5>
+                                        <p>{project.description}</p>
+                                        <CategoryItems categories={project.categories} />
+                                    </div>
+                                </a>
                             </article>
                         )
                     })
@@ -60,8 +64,12 @@ export default function Projects({ projects }) {
     )
 }
 
-Projects.getInitialProps = async (ctx) => {
+export async function getServerSideProps(ctx) {
     const res = await fetch(`${server}/api/projects`)
     const data = await res.json()
-    return { projects: data }
+    return {
+        props: {
+            projects: data
+        }
+    }
 }

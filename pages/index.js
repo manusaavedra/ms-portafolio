@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Navigation from '../components/Navigation'
 import SocialIcons from '../components/SocialIcons'
 import Footer from '../components/Footer'
+import AvatarImage from  '../public/avatar.png'
 
 export default function Home() {
 
@@ -24,7 +25,7 @@ export default function Home() {
       <main>
         <Navigation />
         <section className="presentation">
-          <Image src="/avatar.png" loading="lazy" width={331} height={320} alt="manuel saavedra avatar" />
+          <Image src={AvatarImage} width={331} height={320} alt="manuel saavedra avatar" />
           <div className="presentation-content">
             <div>
               <h4 className="text-primary">HOLA 👋🏼, SOY</h4>
@@ -53,7 +54,7 @@ export default function Home() {
               </a>
             </div>
             <div className="items-image">
-              <Image src="/project-1.png" loading="lazy" width={587} height={390} alt="manuel saavedra avatar" />
+              <Image src="/uploads/project-1.png" loading="lazy" width={587} height={390} alt="manuel saavedra avatar" />
             </div>
           </article>
           <article className="projects-items">
@@ -68,7 +69,7 @@ export default function Home() {
               </a>
             </div>
             <div className="item-image">
-              <Image src="/project-2.png" loading="lazy" width={587} height={390} alt="manuel saavedra avatar" />
+              <Image src="/uploads/project-2.png" loading="lazy" width={587} height={390} alt="manuel saavedra avatar" />
             </div>
           </article>
           <article className="projects-items">
@@ -83,7 +84,7 @@ export default function Home() {
               </a>
             </div>
             <div className="item-image">
-              <Image src="/project-3.png" loading="lazy" width={587} height={390} alt="manuel saavedra avatar" />
+              <Image src="/uploads/project-3.png" loading="lazy" width={587} height={390} alt="manuel saavedra avatar" />
             </div>
           </article>
         </section>
