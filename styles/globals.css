@@ -3,6 +3,7 @@
   --primary-color: #FBC02D;
   --secondary-color: #373A4E;
   --white: #fff;
+  --white-button: #fff;
   --black: #000;
   --font-size-base: 72px
 }
@@ -10,6 +11,8 @@
 html,
 body {
   font-family: 'Montserrat', sans-serif;
+  background-color: var(--white);
+  color: var(--black);
 }
 
 * {
@@ -129,18 +132,22 @@ button {
   cursor: pointer;
 }
 
+.menu-icons {
+  color: var(--black);
+}
+
 button.primary {
   background-color: var(--primary-color);
   color: var(--black);
 }
 
 .text-primary {
-  color: var(--primary-color);
+  color: var(--white-button);
 }
 
 button.secondary {
   background-color: var(--secondary-color);
-  color: var(--white);
+  color: var(--white-button);
 }
 
 .text-secondary {
@@ -390,4 +397,8 @@ button.secondary {
   }
 }
 
+html.dark {
+  --black: #fff !important;
+  --white: #1e2027 !important;
+}
 

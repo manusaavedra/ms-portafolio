@@ -1,14 +1,17 @@
 import Image from 'next/image'
 import ActiveLink from '../components/ActiveNavLink'
+import useDarkMode from '../hooks/useDarkMode'
 import useToggle from '../hooks/useToggle'
+import ThemeSwitchButton from './ThemeSwitchButton'
 
 export default function Navigation() {
 
     const [toggle, handleToggle] = useToggle(false)
+    const [switchTheme, theme, isMounted] = useDarkMode()
 
     return (
         <header>
-            <Image src="/logo-fulltext-default.svg" width={282} height={35} alt="logo" />
+            <Image src={`/logo-fulltext-${theme}.svg`} width={282} height={35} alt="logo" />
             <div className={`navbar ${toggle ? 'open' : ''}`}>
                 <nav>
                     <ul>
@@ -24,10 +27,11 @@ export default function Navigation() {
                         </li>
                     </ul>
                 </nav>
+                <ThemeSwitchButton />
                 <button className="secondary">Descargar Curriculum</button>
             </div>
             <button className="toogle-menu-action" onClick={handleToggle}>
-                <Image src="/menu-icon.svg" width={24} height={24} alt="menu-icon" />
+                <Image src={`/menu-icon.svg`} width={24} height={24} alt="menu" />
             </button>
         </header>
     )
