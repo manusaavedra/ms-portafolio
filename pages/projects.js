@@ -2,14 +2,14 @@ import Head from "next/head"
 import { useEffect, useState } from "react"
 import Image from 'next/image'
 import Navigation from "../components/Navigation"
-import { server } from "../config"
+import { PrismaClient } from ".prisma/client"
 
 export default function Projects({ projects }) {
 
     const [state, setState] = useState([])
 
     useEffect(() => {
-        setState(projects.data)
+        setState(projects)
     }, [projects])
 
     const CategoryItems = ({ categories }) => {
@@ -64,12 +64,17 @@ export default function Projects({ projects }) {
     )
 }
 
-export async function getServerSideProps(ctx) {
-    const res = await fetch(`${server}/api/projects`)
-    const data = await res.json()
-    return {
-        props: {
-            projects: data
+Projects.getInitialProps = async (ctx) => {
+
+    const prisma = new PrismaClient()
+
+    const post = await prisma.projects.findMany({
+        include: {
+            categories: true
         }
+    })
+
+    return {
+        projects: post
     }
 }
