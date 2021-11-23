@@ -38,7 +38,7 @@ export default function Projects({ projects }) {
                         return (
                             <article key={project.id}>
                                 <a href={project.url} target="_blank" rel="noreferrer" >
-                                    <Image src={`${project.photoURL}`} layout="responsive" width={810} height={540} alt={project.title} />
+                                    <Image src={`${project.photoURL}`} loading="lazy" layout="responsive" width={810} height={540} alt={project.title} />
                                     <div className="grid-items-content">
                                         <h5>{project.title}</h5>
                                         <p>{project.description}</p>
@@ -58,6 +58,7 @@ export default function Projects({ projects }) {
             <Head>
                 <title>Manuel Saavedra - Proyectos</title>
                 <meta name="description" content="Estos son algunos proyectos que he querido compatir con todos." />
+                <meta property="og:image" content="/uploads/projects-1.png" />
             </Head>
             <Navigation />
             <ProjectsItems />

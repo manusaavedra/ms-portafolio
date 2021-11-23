@@ -25,6 +25,7 @@ export default function Home() {
       <Head>
         <title>Manuel Saavedra</title>
         <meta name="description" content="Bienvenido a mi humilde espacio" />
+        <meta property="og:image" content="/avatar.png" />
       </Head>
       <main>
         <Navigation />
