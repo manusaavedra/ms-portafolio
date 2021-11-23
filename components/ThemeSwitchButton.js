@@ -5,14 +5,12 @@ export default function ThemeSwitchButton() {
 
     const [switchTheme, theme, isMounted] = useDarkMode()
 
-    if (!isMounted) return null
-
     const toggleTheme = () => {
         switchTheme()
     }
 
     return (
-        <button onClick={toggleTheme}>
+        <button className="button-theme" onClick={toggleTheme}>
             {theme ===  "dark" ? "🌞": "🌛"}
         </button>
     )

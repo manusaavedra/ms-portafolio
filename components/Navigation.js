@@ -3,6 +3,7 @@ import ActiveLink from '../components/ActiveNavLink'
 import useDarkMode from '../hooks/useDarkMode'
 import useToggle from '../hooks/useToggle'
 import ThemeSwitchButton from './ThemeSwitchButton'
+import {CgMenuRight} from  'react-icons/cg'
 
 export default function Navigation() {
 
@@ -31,7 +32,7 @@ export default function Navigation() {
                 <button className="secondary">Descargar Curriculum</button>
             </div>
             <button className="toogle-menu-action" onClick={handleToggle}>
-                <Image src={`/menu-icon.svg`} width={24} height={24} alt="menu" />
+                <CgMenuRight size={24} color="inherit" />
             </button>
         </header>
     )

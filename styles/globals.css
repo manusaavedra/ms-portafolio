@@ -115,8 +115,8 @@ footer {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
+  background-color: var(--white);
+  color: var(--black);
   padding: 15px 120px;
 }
 
@@ -131,10 +131,7 @@ button {
   font-weight: 800;
   box-shadow: 0px 2px 17px 2px rgb(0 0 0 / 15%);
   cursor: pointer;
-}
-
-.menu-icons {
-  color: var(--black);
+  background-color: var(--white);
 }
 
 button.primary {
@@ -142,13 +139,13 @@ button.primary {
   color: var(--black);
 }
 
-.text-primary {
-  color: var(--white-button);
-}
-
 button.secondary {
   background-color: var(--secondary-color);
   color: var(--white-button);
+}
+
+.text-primary {
+  color: var(--primary-color);
 }
 
 .text-secondary {
@@ -168,12 +165,13 @@ button.secondary {
 .presentation-content {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 15px;
 }
 
 .social-icons {
   display: flex;
   gap: 24px;
+  color: var(--secondary-color);
 }
 
 .signal {
@@ -193,6 +191,8 @@ button.secondary {
 
 .skills {
   text-align: center;
+  padding: 20px;
+  fill: var(--black);
 }
 
 .projects-items {
@@ -278,7 +278,7 @@ button.secondary {
   padding: 24px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   header,
   footer {
     padding: 15px 15px;
@@ -320,7 +320,7 @@ button.secondary {
 
   .navbar {
     position: fixed;
-    top: 85px;
+    top: 80px;
     left: 0;
     width: 100%;
     display: flex;
@@ -349,6 +349,10 @@ button.secondary {
     flex-direction: column;
     align-items: center;
     gap: 24px;
+  }
+
+  .presentation {
+    max-width: 400px;
   }
 
   .presentation > span {
@@ -401,6 +405,7 @@ button.secondary {
 html.dark {
   --black: #fff;
   --white: #1e2027;
-  --border-color: #181818
+  --border-color: #181818;
+  --secondary-color: #2a2e32;
 }
 

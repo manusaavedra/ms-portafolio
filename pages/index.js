@@ -3,17 +3,21 @@ import Image from 'next/image'
 import Navigation from '../components/Navigation'
 import SocialIcons from '../components/SocialIcons'
 import Footer from '../components/Footer'
-import AvatarImage from  '../public/avatar.png'
+import AvatarImage from '../public/avatar.png'
+import { IoIosArrowDown } from 'react-icons/io'
+import useDarkMode from '../hooks/useDarkMode'
 
 export default function Home() {
 
-  function scrollVisibleArea(selector) {
+  const [switchTheme, theme, isMounted] = useDarkMode()
+
+  const scrollVisibleArea = (selector) => {
     let section = document.querySelector(selector);
     section.scrollIntoView({
       block: 'start',
       behavior: 'instant',
       inline: 'start'
-    });
+    })
   }
 
   return (
@@ -27,18 +31,19 @@ export default function Home() {
         <section className="presentation">
           <Image src={AvatarImage} width={331} height={320} alt="manuel saavedra avatar" />
           <div className="presentation-content">
+            <h4 className="text-primary">HOLA 👋🏼, SOY</h4>
             <div>
-              <h4 className="text-primary">HOLA 👋🏼, SOY</h4>
               <h3>Manuel Saavedra</h3>
               <p>Desarrollador Frontend. Actualmente sigo aprendiendo sobre nuevas tecnologías.</p>
             </div>
             <SocialIcons />
           </div>
+
         </section>
         <div className="signal">
           <h5>Aquí tienes algunos proyectos que te quiero compartir.</h5>
           <button onClick={() => scrollVisibleArea("#projects")}>
-            <Image src="/arrow-down-icon.svg" loading="lazy" width={24} height={24} alt="arrow down icon" />
+            <IoIosArrowDown size={24} color="inherit" />
           </button>
         </div>
         <section className="projects" id="projects">
@@ -91,7 +96,7 @@ export default function Home() {
         <section className="skills">
           <article className="skills-content">
             <h4>Algunas Habilidades</h4>
-            <Image src="/skills.svg" loading="lazy" width={578} height={300} alt="manuel saavedra avatar" />
+            <Image src={`/skills-${theme}.svg`} layout="intrinsic" priority width={600} height={300} alt="manuel saavedra avatar" />
           </article>
         </section>
       </main>

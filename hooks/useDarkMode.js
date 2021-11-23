@@ -10,9 +10,9 @@ export default function useDarkMode() {
   }, [])
 
   const switchTheme = () => {
-    if (isMounted) {
+    if (isMounted)
       setTheme(theme === "light" ? "dark" : "light")
-    }
+    
   }
 
   return [switchTheme, theme, isMounted]
