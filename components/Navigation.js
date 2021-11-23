@@ -10,6 +10,8 @@ export default function Navigation() {
     const [toggle, handleToggle] = useToggle(false)
     const [switchTheme, theme, isMounted] = useDarkMode()
 
+    if (!isMounted) return null 
+
     return (
         <header>
             <Image src={`/logo-fulltext-${theme}.svg`} width={282} height={35} alt="logo" />
