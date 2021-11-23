@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import Image from 'next/image'
 import Navigation from "../components/Navigation"
 import { PrismaClient } from "@prisma/client"
+import Footer from "../components/Footer"
 
 export default function Projects({ projects }) {
 
@@ -60,6 +61,7 @@ export default function Projects({ projects }) {
             </Head>
             <Navigation />
             <ProjectsItems />
+            <Footer />
         </main>
     )
 }

@@ -6,7 +6,17 @@
   --white-button: #fff;
   --black: #000;
   --font-size-base: 72px;
-  --border-color: #dddddd
+  --border-color: #dddddd;
+  --footer-background: #FBC02D;
+}
+
+
+html.dark {
+  --black: #fff;
+  --white: #1e2027;
+  --border-color: #181818;
+  --secondary-color: #2a2e32;
+  --footer-background: #141516;
 }
 
 html,
@@ -115,7 +125,7 @@ footer {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--white);
+  background-color: var(--footer-background);
   color: var(--black);
   padding: 15px 120px;
 }
@@ -191,7 +201,6 @@ button.secondary {
 
 .skills {
   text-align: center;
-  padding: 20px;
   fill: var(--black);
 }
 
@@ -402,10 +411,4 @@ button.secondary {
   }
 }
 
-html.dark {
-  --black: #fff;
-  --white: #1e2027;
-  --border-color: #181818;
-  --secondary-color: #2a2e32;
-}
 
