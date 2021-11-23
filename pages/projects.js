@@ -58,7 +58,7 @@ export default function Projects({ projects }) {
             <Head>
                 <title>Manuel Saavedra - Proyectos</title>
                 <meta name="description" content="Estos son algunos proyectos que he querido compatir con todos." />
-                <meta property="og:image" content="/uploads/project-1.png" />
+                <meta property="og:image" content="/uploads/seo-projects.png" />
             </Head>
             <Navigation />
             <ProjectsItems />
