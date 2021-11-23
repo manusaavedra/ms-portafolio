@@ -96,7 +96,12 @@ export default function Home() {
         <section className="skills">
           <article className="skills-content">
             <h4>Algunas Habilidades</h4>
-            <Image src={`/skills-${theme}.svg`} layout="intrinsic" priority width={600} height={300} alt="manuel saavedra avatar" />
+            <Image 
+              src={`/skills-${theme}.svg`} 
+              layout="intrinsic" 
+              width={600} 
+              height={300} 
+              alt="skills" />
           </article>
         </section>
       </main>
