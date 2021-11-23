@@ -8,7 +8,7 @@ export default async function handler(req, res) {
 
         case 'POST': {
             
-            const {from, to, subject, message} = req.body
+            const {from, to, message} = req.body
 
             const transporter = nodemailer.createTransport({
                 service: 'gmail',
@@ -21,7 +21,7 @@ export default async function handler(req, res) {
             const mailOptions = {
                 to: to,
                 replyTo: from,
-                subject: subject,
+                subject: "Nuevo mensaje de tu portafolio web",
                 text: message
             }
 
