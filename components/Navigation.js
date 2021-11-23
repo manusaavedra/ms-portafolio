@@ -29,7 +29,7 @@ export default function Navigation() {
                     </ul>
                 </nav>
                 <ThemeSwitchButton />
-                <button className="secondary">Descargar Curriculum</button>
+                {/*<button className="secondary">Descargar Curriculum</button>*/}
             </div>
             <button className="toogle-menu-action" onClick={handleToggle}>
                 <CgMenuRight size={24} color="inherit" />
