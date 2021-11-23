@@ -8,19 +8,19 @@ export default async function handler(req, res) {
 
         case 'POST': {
             
-            const {to, subject, message} = req.body
+            const {from, to, subject, message} = req.body
 
             const transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
-                    user: 'manusaavedra.potafolioweb@gmail.com',
+                    user: 'manusaavedra.portafolioweb@gmail.com',
                     pass: '#yamahaxf0907'
                 }
             })
 
             const mailOptions = {
-                from: 'manusaavedra.potafolioweb@gmail.com',
-                to: to,
+                from: from,
+                to: 'manusaavedra.portafolioweb@gmail.com',
                 subject: subject,
                 text: message
             }
