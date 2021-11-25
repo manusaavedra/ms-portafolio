@@ -5,7 +5,9 @@ import SocialIcons from '../components/SocialIcons'
 import Footer from '../components/Footer'
 import AvatarImage from '../public/avatar.png'
 import { IoIosArrowDown } from 'react-icons/io'
+import { MdOutlineWavingHand } from 'react-icons/md'
 import useDarkMode from '../hooks/useDarkMode'
+import ContactsForm from '../components/ContactsForm'
 
 export default function Home() {
 
@@ -32,7 +34,7 @@ export default function Home() {
 				<section className="presentation">
 					<Image src={AvatarImage} width={331} height={320} alt="manuel saavedra avatar" />
 					<div className="presentation-content">
-						<h4 className="text-primary">HOLA 👋🏼, SOY</h4>
+						<h4 className="text-primary">HOLA <MdOutlineWavingHand />, SOY</h4>
 						<div>
 							<h3>Manuel Saavedra</h3>
 							<p>Desarrollador Frontend. Actualmente sigo aprendiendo sobre nuevas tecnologías.</p>
@@ -104,6 +106,9 @@ export default function Home() {
 							height={300}
 							alt="skills" />
 					</article>
+				</section>
+				<section className="contacts">
+					<ContactsForm />
 				</section>
 			</main>
 			<Footer />

@@ -1,5 +1,5 @@
-import { useEffect } from "react"
 import useDarkMode from "../hooks/useDarkMode.js"
+import {CgSun, CgMoon} from  'react-icons/cg'
 
 export default function ThemeSwitchButton() {
 
@@ -11,7 +11,7 @@ export default function ThemeSwitchButton() {
 
     return (
         <button className="button-theme" onClick={toggleTheme}>
-            {theme ===  "dark" ? "🌞": "🌛"}
+            {theme ===  "dark" ? <CgSun size={16} />: <CgMoon size={16} />}
         </button>
     )
 }
