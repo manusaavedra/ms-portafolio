@@ -29,8 +29,6 @@ export default function Projects({ projects }) {
 
     const ProjectsItems = () => {
 
-        console.log(state)
-
         return (
             <section className="grid-projects projects-section">
                 {

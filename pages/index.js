@@ -41,7 +41,6 @@ export default function Home() {
 						</div>
 						<SocialIcons />
 					</div>
-
 				</section>
 				<div className="signal">
 					<h5>Aquí tienes algunos proyectos que te quiero compartir.</h5>

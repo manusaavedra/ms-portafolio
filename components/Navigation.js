@@ -28,10 +28,14 @@ export default function Navigation() {
                                 <a>Proyectos</a>
                             </ActiveLink>
                         </li>
+                        <li>
+                            <ActiveLink activeClassName="active" href="/blog">
+                                <a>Blog</a>
+                            </ActiveLink>
+                        </li>
                     </ul>
                 </nav>
                 <ThemeSwitchButton />
-                {/*<button className="secondary">Descargar Curriculum</button>*/}
             </div>
             <button className="toogle-menu-action" onClick={handleToggle}>
                 <CgMenuRight size={24} color="inherit" />
