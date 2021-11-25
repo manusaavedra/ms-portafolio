@@ -108,6 +108,8 @@ export default function Home() {
 					</article>
 				</section>
 				<section className="contacts">
+					<h4>Hablemos...</h4>
+					<p>Si está interesado en trabajar conmigo en su próximo proyecto, no dude en ponerse en contacto conmigo.</p>
 					<ContactsForm />
 				</section>
 			</main>

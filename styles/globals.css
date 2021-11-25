@@ -340,6 +340,13 @@ button.secondary {
   padding: 24px;
 }
 
+.contacts {
+  max-width: 600px;
+  margin: 200px auto 0;
+  width: 100%;
+  text-align: center;
+}
+
 .modal {
   position: fixed;
   top: 0;
