@@ -34,16 +34,16 @@ export default function Home() {
 				<section className="presentation">
 					<Image src={AvatarImage} width={331} height={320} alt="manuel saavedra avatar" />
 					<div className="presentation-content">
-						<h4 className="text-primary">HOLA <MdOutlineWavingHand />, SOY</h4>
+						<h4 className="headline4 text-primary">HOLA <MdOutlineWavingHand />, SOY</h4>
 						<div>
-							<h3>Manuel Saavedra</h3>
+							<h3 className="headline3">Manuel Saavedra</h3>
 							<p>Desarrollador Frontend. Actualmente sigo aprendiendo sobre nuevas tecnologías.</p>
 						</div>
 						<SocialIcons />
 					</div>
 				</section>
 				<div className="signal">
-					<h5>Aquí tienes algunos proyectos que te quiero compartir.</h5>
+					<h5 className="headline5">Aquí tienes algunos proyectos que te quiero compartir.</h5>
 					<button onClick={() => scrollVisibleArea("#projects")}>
 						<IoIosArrowDown size={24} color="inherit" />
 					</button>
@@ -51,7 +51,7 @@ export default function Home() {
 				<section className="projects" id="projects">
 					<article className="projects-items">
 						<div className="items-content">
-							<h5>Sequentracks</h5>
+							<h5 className="headline5">Sequentracks</h5>
 							<p>Un reproductor de secuencias de audio multitrack para músicos.</p>
 							<span className="caption">- Solo Desktop</span>
 							<a href="https://multitrackapp.netlify.app" target="_blank" rel="noreferrer">
@@ -66,7 +66,7 @@ export default function Home() {
 					</article>
 					<article className="projects-items">
 						<div className="items-content">
-							<h5>Overtime</h5>
+							<h5 className="headline5">Overtime</h5>
 							<p>Simple registro de jornada laboral u horas extras para trabajadores.</p>
 							<span className="caption">- Responsive</span>
 							<a href="https://overtime.netlify.app" target="_blank" rel="noreferrer">
@@ -81,7 +81,7 @@ export default function Home() {
 					</article>
 					<article className="projects-items">
 						<div className="items-content">
-							<h5>Covid 19 Map</h5>
+							<h5 className="headline5">Covid 19 Map</h5>
 							<p>Mapa de contagiados por la pandemia covid-19.</p>
 							<span className="caption">- Responsive</span>
 							<a href="https://manusaavedra.github.io/Mapa-Coronavirus/" target="_blank" rel="noreferrer">
@@ -97,7 +97,7 @@ export default function Home() {
 				</section>
 				<section className="skills">
 					<article className="skills-content">
-						<h4>Algunas Habilidades</h4>
+						<h4 className="headline4">Algunas Habilidades</h4>
 						<Image
 							src={`/skills-${theme}.svg`}
 							layout="intrinsic"
@@ -107,7 +107,7 @@ export default function Home() {
 					</article>
 				</section>
 				<section className="contacts">
-					<h4>Hablemos...</h4>
+					<h4 className="headline4">Hablemos...</h4>
 					<p>Si está interesado en trabajar conmigo en su próximo proyecto, no dude en ponerse en contacto conmigo.</p>
 					<ContactsForm />
 				</section>

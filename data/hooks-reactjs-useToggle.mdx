@@ -1,0 +1,55 @@
+---
+title: 'Hooks useToggle(); reactjs'
+description: 'Creando un hook useToggle'
+thumbnail: ''
+publishedBy: 'Manuel Saavedra'
+publishedAt: '2021-11-25'
+---
+
+## ¿Qué es un hook ?
+
+Un hook en react es una función especial que le permite "engancharse" a las funciones de React. Por ejemplo, es un Hook que le permite agregar el estado React a los componentes de la función.
+
+## ¿Cuándo usaría un gancho?
+
+Si escribe un componente de función y se da cuenta de que necesita agregarle algún estado binario es decir (true/false), puedes usar un hook dentro del componente de función existente. ¡Vamos a hacer eso ahora mismo!
+
+Para ello de preferencia puedes crear una carpeta `/hooks` dentro de tu proyecto y creamos un archivo dentro de la carpeta de esta manera `/hooks/useToggle.js`.
+
+y dentro copiar el siguiente código:
+
+``` jsx:/hooks/useToggle.js
+	
+    import React, {useState} from 'react'
+	
+	export default function useToggle(initialState=false) {
+		const [state, setState] = useState(initialState);
+		const toggle = useCallback(() => setState(state => !state), []);
+		
+		return [state, toggle]
+	}
+```
+
+De esta manera tendriamos un hook que podriamos llamar cada vez que lo necesitemos sin tener que volver a escribir la lógica del código por ejemplo.
+
+``` jsx:/hooks/App.js
+    
+    import React, {useState} from 'react'
+	import useToggle from '/hooks/useToggle'
+	
+	export default function App(initialState=false) {
+		const [state, toggle] = useToggle();
+		return {
+            <button onClick={toggle}>
+                { state ? 'true' : 'false' } 
+			</button>
+		}
+	}
+```
+
+Y listo! ya lo tienes.
+
+## Referencias
+
+- [ReactJs](https://reactjs.org/docs/hooks-state.html)
+- [UseHooks](https://usehooks.com/useToggle/)

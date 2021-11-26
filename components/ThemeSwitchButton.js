@@ -5,12 +5,10 @@ export default function ThemeSwitchButton() {
 
     const [switchTheme, theme, isMounted] = useDarkMode()
 
-    const toggleTheme = () => {
-        switchTheme()
-    }
+    if (!isMounted) return null
 
     return (
-        <button className="button-theme" onClick={toggleTheme}>
+        <button className="button-theme" onClick={switchTheme}>
             {theme ===  "dark" ? <CgSun size={16} />: <CgMoon size={16} />}
         </button>
     )

@@ -16,15 +16,15 @@ export default function Blog({ posts }) {
             <main>
                 <section className="posts">
                     <div className="flatItemsPost">
-                        <h5 className="text-primary">Mis posts</h5>
+                        <h5 className="headline5 text-primary">Mis posts</h5>
                         <ul>
                             {
                                 posts.map((post) => (
                                     <li key={post.title}>
                                         <Link href={`/blog/${post.slug}`} passHref>
                                             <div>
-                                                <h5>{post.title}</h5>
-                                                <span className="caption text-secondary">{moment(post.date).format("DD MMM YYYY")}</span>
+                                                <h5 className="headline5">{post.title}</h5>
+                                                <span className="caption text-secondary">{moment(post.publishedAt).format("DD MMM YYYY")}</span>
                                             </div>
                                         </Link>
                                     </li>
@@ -33,7 +33,7 @@ export default function Blog({ posts }) {
                         </ul>
                     </div>
                     <div className="sidebar hidden-sm">
-                        <h5 className="text-primary">Últimos proyectos</h5>
+                        <h5 className="headline5 text-primary">Últimos proyectos</h5>
                     </div>
                 </section>
             </main>

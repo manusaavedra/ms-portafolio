@@ -10,7 +10,7 @@ export default function Navigation() {
     const [toggle, handleToggle] = useToggle(false)
     const [switchTheme, theme, isMounted] = useDarkMode()
 
-    if (!isMounted) return null 
+    if (!isMounted) return null
 
     return (
         <header>

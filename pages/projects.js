@@ -38,7 +38,7 @@ export default function Projects({ projects }) {
                                 <a href={project.url} target="_blank" rel="noreferrer" >
                                     <Image src={`${project.photoURL}`} loading="lazy" layout="responsive" width={810} height={540} alt={project.title} />
                                     <div className="grid-items-content">
-                                        <h5>{project.title}</h5>
+                                        <h5 className="headline5">{project.title}</h5>
                                         <p>{project.description}</p>
                                         <CategoryItems categories={project.categories} />
                                     </div>
