@@ -4,7 +4,8 @@ import { MDXRemote } from "next-mdx-remote"
 import Navigation from "../../components/Navigation"
 import MDXComponets from '../../components/MDXComponets'
 import Footer from "../../components/Footer"
-import {CgCalendar} from  'react-icons/cg'
+import { CgCalendar } from 'react-icons/cg'
+import Avatar from '../../components/Avatar'
 
 export default function Post({ source, frontmatter }) {
     return (
@@ -15,9 +16,12 @@ export default function Post({ source, frontmatter }) {
             </Head>
             <Navigation />
             <div className="container">
-                <div>
-                    <p className="text-metadata">publicado por: {frontmatter.publishedBy}</p>
-                    <p className="text-metadata"><CgCalendar /> {frontmatter.publishedAt}</p>
+                <div className="metadata">
+                    <Avatar />
+                    <div>
+                        <p className="text-metadata">publicado por: {frontmatter.publishedBy}</p>
+                        <p className="text-metadata"><CgCalendar /> {frontmatter.publishedAt}</p>
+                    </div>
                 </div>
                 <MDXRemote {...source} components={MDXComponets} />
             </div>
