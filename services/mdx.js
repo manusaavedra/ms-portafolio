@@ -46,7 +46,7 @@ async function getFileBySlug(slug) {
 
 async function getAllFilesMetadata() {
 
-    const files = getFile()
+    const files = getFile().reverse()
 
     return files.reduce((allPost, postSlug) => {
         const mdxSource = fs.readFileSync(

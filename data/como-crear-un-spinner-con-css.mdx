@@ -1,0 +1,59 @@
+---
+title: 'Como crear un spinner con CSS'
+description: 'Un spinner loader, o donut spinner, es un elemento muy típico en nuestras aplicaciones ya que le indica al usuario que un contenido se está cargando.'
+thumbnail: 'https://i.ibb.co/PttvZQv/spinner-con-css.png'
+publishedBy: 'Manuel Saavedra'
+publishedAt: '2021-11-26'
+---
+
+<img
+    className="img-responsive featured"
+    alt="react hooks usetoggle"
+    src="https://i.ibb.co/PttvZQv/spinner-con-css.png"
+/>
+
+## ¿ Que es un spinner ?
+
+Un spinner loader, o donut spinner, es un elemento muy típico en nuestras aplicaciones ya que le indica al usuario que un contenido se está cargando.
+
+Vamos a ver cómo puedes crear el tuyo con HTML y CSS en muy pocas líneas de código.
+
+```html:/index.html
+<div class="spinner"></div>
+```
+
+
+```css:/style.css
+
+.spinner {
+	width: 36px;
+	height: 36px;
+	border: 4px solid #165ef8;
+	border-radius: 50%;
+	border-left-color: transparent;
+
+	animation: spinner 1s infinite;
+}
+
+@keyframes spinner {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+``` 
+
+Y listo ya tenemos un spinner animado para nuestro sitio web.
+
+
+👉🏻 Ejemplo completo aquí: <a href="https://manshort.vercel.app/803aza" target="_blank" rel="noreferrer">Demo Online</a>
+
+👋🏽 Hasta luego!
+
+## Referencias
+
+- [Midudev](https://midu.dev/como-crear-un-spinner-con-css/)
+
+
