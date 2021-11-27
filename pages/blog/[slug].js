@@ -19,8 +19,8 @@ export default function Post({ source, frontmatter }) {
                 <div className="metadata">
                     <Avatar />
                     <div>
-                        <p className="text-metadata">publicado por: {frontmatter.publishedBy}</p>
                         <p className="text-metadata"><CgCalendar /> {frontmatter.publishedAt}</p>
+                        <p className="text-metadata"><b>publicado por:</b> {frontmatter.publishedBy}</p>
                     </div>
                 </div>
                 <MDXRemote {...source} components={MDXComponets} />

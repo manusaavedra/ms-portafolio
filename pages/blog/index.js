@@ -1,6 +1,9 @@
 import Head from 'next/head'
+import Image from 'next/image'
 import Link from 'next/link'
+import { CgCalendar } from 'react-icons/cg'
 import Navigation from '../../components/Navigation'
+import SpotifyPlaylist from '../../components/SpotifyPlayList'
 import { getAllFilesMetadata } from "../../services/mdx"
 import moment from '../../services/moment'
 
@@ -21,11 +24,20 @@ export default function Blog({ posts }) {
                             {
                                 posts.map((post) => (
                                     <li key={post.title}>
+                                        <div>
+                                            <Image src={`/logo-thumbnail-${post.tags[0]}.svg`} width={50} height={50} alt={post.title} />
+                                        </div>
                                         <Link href={`/blog/${post.slug}`} passHref>
-                                            <div>
+                                            <a>
                                                 <h5 className="headline5">{post.title}</h5>
-                                                <span className="caption text-secondary">{moment(post.publishedAt).format("DD MMM YYYY")}</span>
-                                            </div>
+                                                <div className="metadata">
+                                                    <CgCalendar />
+                                                    <span className="text-metadata">
+                                                        {moment(post.publishedAt).format("DD MMM YYYY")}
+                                                    </span>
+
+                                                </div>
+                                            </a>
                                         </Link>
                                     </li>
                                 ))
@@ -33,7 +45,13 @@ export default function Blog({ posts }) {
                         </ul>
                     </div>
                     <div className="sidebar hidden-sm">
-                        <h5 className="headline5 text-primary">Últimos proyectos</h5>
+                        <div>
+                            <h5>Podcasts Favoritos:</h5>
+                            <SpotifyPlaylist />
+                        </div>
+                        <div>
+                            <h5>Proyectos recientes</h5>
+                        </div>
                     </div>
                 </section>
             </main>

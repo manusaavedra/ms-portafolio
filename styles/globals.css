@@ -7,7 +7,7 @@
   --black: #000;
   --font-size-base: 68px;
   --border-color: #dddddd;
-  --footer-background: #FBC02D;
+  --footer-background: #fff;
   --background-inputs: #fff;
   --editor-gray: #656565;
   --editor-blue: #8095ff;
@@ -202,6 +202,7 @@ pre > code {
   height: 50px;
   border-radius: 50%;
   position: relative;
+  margin-bottom: 12px;
 }
 
 .metadata {
@@ -553,8 +554,29 @@ button.secondary {
 .flatItemsPost ul li {
   padding: 15px 24px;
   transition: .1s ease-in-out;
-  border-left: 2px solid var(--primary-color);
   margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.flatItemsPost ul li .thumbnail {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flatItemsPost ul li a {
+  width: 100%;
+  height: 100%;
+}
+
+.flatItemsPost ul li a:hover {
+  color: var(--primary-color);
 }
 
 .flatItemsPost ul li:hover {
@@ -606,9 +628,15 @@ button.secondary {
 
 @media (max-width: 800px) {
 
+  header {
+    position: sticky;
+    top: 0;
+    left: 0;
+  }
+
   .navbar {
     position: fixed;
-    top: 80px;
+    bottom: 0;
     left: 0;
     width: 100%;
     display: flex;
@@ -618,15 +646,15 @@ button.secondary {
     padding: 40px 0;
     background-color: var(--white);
     box-shadow: 0px 19px 8px 0px rgb(0 0 0 / 5%);
-    transform: translateY(-320px);
+    transform: translateY(100%);
     opacity: 0;
     z-index: -99;
     transition: .2s ease-in-out;
+    height: 100vh;
   }
 
   .navbar.open {
     transform: translateY(0px);
-    height: calc(100vh - 60px);
     opacity: 1;
   }
 
