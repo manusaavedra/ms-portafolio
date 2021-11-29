@@ -51,6 +51,7 @@ export default function Blog({ posts }) {
                         </div>
                         <div>
                             <h5>Proyectos recientes</h5>
+                            
                         </div>
                     </div>
                 </section>

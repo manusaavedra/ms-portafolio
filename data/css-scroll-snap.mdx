@@ -1,0 +1,89 @@
+---
+title: 'CSS Scoll Snap'
+description: 'CSS Scroll Snap es un módulo de CSS que introduce posiciones de ajuste de desplazamiento, que imponen las posiciones de desplazamiento en las que puede terminar la ventana de desplazamiento de un contenedor de desplazamiento después de que se haya completado una operación de desplazamiento'
+thumbnail: 'https://i.imgur.com/9r0Srbc.png'
+publishedBy: 'Manuel Saavedra'
+publishedAt: '2021-11-29'
+tags: 
+- css
+---
+
+<img
+    className="img-responsive featured"
+    alt="Como crear un spinner con css"
+    src="https://i.imgur.com/9r0Srbc.png"
+/>
+
+## ¿ Qué es Scroll Snap ?
+
+Es el acto de ajustar el desplazamiento de un contenedor de desplazamiento para que esté en una posición de ajuste preferida una vez que finalice la operación de desplazamiento.
+
+Se puede optar por un contenedor de desplazamiento para ajustar el desplazamiento mediante la propiedad. Esto le dice al navegador que debe considerar ajustar este contenedor de desplazamiento a las posiciones de ajuste producidas por sus descendientes. determina el eje en el que se produce el desplazamiento: , , o , y la rigurosidad de ajuste: , . Más sobre esto más adelante.`scroll-snap-type scroll-snap-type x y both mandatory proximity`
+
+Se puede producir una posición de ajuste declarando una alineación deseada en un elemento. Esta posición es el desplazamiento de desplazamiento en el que el contenedor de desplazamiento ancestral más cercano y el elemento se alinean según lo especificado para el eje dado. Las siguientes alineaciones son posibles en cada eje: , , `.start end center`
+
+Una alineación significa que el borde de inicio del puerto de ajuste del contenedor de desplazamiento debe enjuagarse con el borde de inicio del área de ajuste del elemento. Del mismo modo, las alineaciones y significan que el borde o centro del extremo del snapport del contenedor de desplazamiento debe enjuagarse con el borde o centro del extremo del área de ajuste del elemento.`start end center`
+
+Snapport es el área del contenedor de desplazamiento con la que se alinean las áreas de ajuste. De forma predeterminada, es la misma que la ventana gráfica del contenedor de desplazamiento, pero se puede ajustar mediante la propiedad.scroll-padding
+
+### Ejemplo de galeria horizontal:
+
+```html:/index.html
+
+<style>
+	#gallery {
+		width: 400px;
+		scroll-snap-type: x mandatory;
+		overflow-x: scroll;
+		display: flex;
+	}
+
+	#gallery img {
+		scroll-snap-align: center;
+	}
+</style>
+
+<div id="gallery">
+  <img src="https://th.bing.com/th/id/OIP.pLK56AS5LeizLLRW1k2c1AHaD3?pid=ImgDet&rs=1" width="400">
+  <img src="https://th.bing.com/th/id/OIP.pLK56AS5LeizLLRW1k2c1AHaD3?pid=ImgDet&rs=1" width="400">
+  <img src="https://th.bing.com/th/id/OIP.pLK56AS5LeizLLRW1k2c1AHaD3?pid=ImgDet&rs=1" width="400">
+</div>
+
+```
+👉🏻 Ver ejemplo <a href="https://manshort.vercel.app/6m62no" target="_blank" rel="noreferrer">AQUÍ</a>.
+
+### Ejemplo de galeria vertical
+
+```html:/index.html
+
+<style>
+	#gallery {
+		height: 220px;
+		scroll-snap-type: y mandatory;
+		overflow-x: scroll;
+	}
+
+	#gallery img {
+		scroll-snap-align: center;
+	}
+</style>
+
+<div id="gallery">
+  <img src="https://th.bing.com/th/id/OIP.pLK56AS5LeizLLRW1k2c1AHaD3?pid=ImgDet&rs=1" width="400">
+  <img src="https://th.bing.com/th/id/OIP.pLK56AS5LeizLLRW1k2c1AHaD3?pid=ImgDet&rs=1" width="400">
+  <img src="https://th.bing.com/th/id/OIP.pLK56AS5LeizLLRW1k2c1AHaD3?pid=ImgDet&rs=1" width="400">
+</div>
+
+```
+
+👉🏻 Ver ejemplo <a href="https://manshort.vercel.app/7hqcis" target="_blank" rel="noreferrer">AQUÍ</a>
+
+Espero te haya gustado este post y te sirva para tus proyectos.
+
+👋🏽 Hasta luego!
+
+## Referencias
+
+- [Google Developers](https://developers.google.com/web/updates/2018/07/css-scroll-snap)
+
+

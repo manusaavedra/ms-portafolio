@@ -128,11 +128,11 @@ pre > code {
   color: var(--editor-gray);
 }
 
-
+.token.selector,
+.token.fucntion,
 .token.property,
 .token.tag,
 .token.boolean,
-.token.number,
 .token.constant,
 .token.symbol,
 .token.deleted {
@@ -141,13 +141,13 @@ pre > code {
 
 .token.class,
 .token.color,
-.token.unit,
 .token.hexcode.color {
   color: var(--editor-unit-colors);
 }
 
+.token.unit,
+.token.number,
 .token.parameter,
-.token.selector,
 .token.attr-name {
   color: #fff;
 }
@@ -168,10 +168,6 @@ pre > code {
 .language-css .token.string,
 .style .token.string {
   color: var(--editor-fucsia);
-}
-
-.token.function {
-  color: var(--editor-blue);
 }
 
 .token.regex,

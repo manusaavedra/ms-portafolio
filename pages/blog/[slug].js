@@ -16,6 +16,7 @@ export default function Post({ source, frontmatter }) {
             </Head>
             <Navigation />
             <div className="container">
+                <h1>{frontmatter.title}</h1>
                 <div className="metadata">
                     <Avatar />
                     <div>
