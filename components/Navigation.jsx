@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import ActiveLink from '../components/ActiveNavLink'
+import ActiveLink from './ActiveNavLink'
 import useDarkMode from '../hooks/useDarkMode'
 import useToggle from '../hooks/useToggle'
 import ThemeSwitchButton from './ThemeSwitchButton'

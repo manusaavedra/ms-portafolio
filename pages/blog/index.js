@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { CgCalendar } from 'react-icons/cg'
 import Navigation from '../../components/Navigation'
+import SearchInput from '../../components/SearchInput'
 import SpotifyPlaylist from '../../components/SpotifyPlayList'
 import { getAllFilesMetadata } from "../../services/mdx"
 import moment from '../../services/moment'
@@ -16,10 +17,13 @@ export default function Blog({ posts }) {
                 <meta property="og:image" content="/uploads/seo-featured.png" />
             </Head>
             <Navigation />
+            <SearchInput />
             <main>
                 <section className="posts">
                     <div className="flatItemsPost">
-                        <h5 className="headline5 text-primary">Mis posts</h5>
+                        <div className="titles-container">
+                            <h5 className="headline5 text-primary">Mis posts</h5>
+                        </div>
                         <ul>
                             {
                                 posts.map((post) => (
@@ -51,7 +55,7 @@ export default function Blog({ posts }) {
                         </div>
                         <div>
                             <h5>Proyectos recientes</h5>
-                            
+
                         </div>
                     </div>
                 </section>
