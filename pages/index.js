@@ -99,7 +99,7 @@ export default function Home() {
 					<article className="skills-content">
 						<h4 className="headline4">Algunas Habilidades</h4>
 						<Image
-							src={`/skills-${theme}.svg`}
+							src={`/skills-light.svg`}
 							layout="intrinsic"
 							width={600}
 							height={300}

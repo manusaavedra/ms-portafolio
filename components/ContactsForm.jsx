@@ -1,6 +1,7 @@
 import { useRef } from "react"
 import useInput from "../hooks/useInput"
 import Modal from "./Modal"
+import ContactsLinks from "./ContactsLinks"
 
 export default function ContactsForm() {
 
@@ -48,6 +49,7 @@ export default function ContactsForm() {
 
     return (
         <form ref={formRef} onSubmit={handleSubmit}>
+            <ContactsLinks />
             <div className="form-inputs">
                 <input type="text" onChange={names.onChange} value={names.value} placeholder="¿Cómo te llamas?" />
             </div>

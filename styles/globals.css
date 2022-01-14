@@ -337,6 +337,20 @@ form .form-inputs textarea {
   width: 100%;
 }
 
+.contacts-links ul {
+  list-style: none;
+}
+
+.contacts-links ul li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  color: var(--secondary-color);
+  text-decoration: underline;
+  margin-bottom: 12px;
+}
+
 textarea {
   resize: none;
 }
@@ -416,6 +430,7 @@ button.secondary {
 
 .social-icons {
   display: flex;
+  justify-content: center;
   gap: 24px;
   color: var(--secondary-color);
 }
