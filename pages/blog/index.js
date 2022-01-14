@@ -39,7 +39,6 @@ export default function Blog({ posts }) {
                                                     <span className="text-metadata">
                                                         {moment(post.publishedAt).format("DD MMM YYYY")}
                                                     </span>
-
                                                 </div>
                                             </a>
                                         </Link>

@@ -8,13 +8,10 @@ import {CgMenuRight} from  'react-icons/cg'
 export default function Navigation() {
 
     const [toggle, handleToggle] = useToggle(false)
-    const [switchTheme, theme, isMounted] = useDarkMode()
-
-    if (!isMounted) return null
 
     return (
         <header>
-            <Image src={`/logo-fulltext-${theme}.svg`} width={282} height={35} alt="logo" />
+            <Image src={`/logo-fulltext-light.svg`} width={282} height={35} alt="logo" />
             <div className={`navbar ${toggle ? 'open' : ''}`}>
                 <nav>
                     <ul>
@@ -35,7 +32,6 @@ export default function Navigation() {
                         </li>
                     </ul>
                 </nav>
-                <ThemeSwitchButton />
             </div>
             <button className="toogle-menu-action" onClick={handleToggle}>
                 <CgMenuRight size={24} color="inherit" />
