@@ -50,13 +50,13 @@ export default function Home() {
 						<h4 className="flex items-center justify-center md:justify-start gap-2 text-2xl">HOLA <MdOutlineWavingHand />, SOY</h4>
 						<div className="flex flex-col gap-2">
 							<h3 className="headline3">Manuel Saavedra</h3>
-							<p>Desarrollador Frontend. Actualmente sigo aprendiendo sobre nuevas tecnologías.</p>
+							<p><b>Fullstack Developer</b> con experiencia en desarrollo web, también soy músico 🎸</p>
 						</div>
 						<SocialIcons />
 					</div>
 				</section>
 				<div className="flex flex-col justify-center items-center gap-4">
-					<h5 className="font-bold text-xl">Aquí tienes algunos proyectos que te quiero compartir.</h5>
+					<h5 className="font-semibold text-xl">Aquí tienes algunos proyectos que te quiero compartir.</h5>
 					<button onClick={() => scrollVisibleArea("#projects")}>
 						<IoIosArrowDown size={24} color="inherit" />
 					</button>
