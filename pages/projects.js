@@ -1,51 +1,44 @@
 import Head from "next/head"
 import { useEffect, useState } from "react"
-import Image from 'next/image'
 import Navigation from "../components/Navigation"
-import { PrismaClient } from "@prisma/client"
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Footer from "../components/Footer"
 
-export default function Projects({ projects }) {
+export default function Projects() {
 
     const [state, setState] = useState([])
 
     useEffect(() => {
-        setState(projects)
-    }, [projects])
-
-    const CategoryItems = ({ categories }) => {
-        return (
-            <ul className="tags">
-                {
-                    categories.map((category) => {
-                        return (
-                            <li key={category.id}>{category.category}</li>
-                        )
-                    })
-                }
-            </ul>
-        )
-    }
+        fetch('/api/projects')
+            .then((res) => res.json())
+            .then((data) => setState(data))
+            .catch((err) => {
+                console.log(err)
+            })
+    }, [])
 
     const ProjectsItems = () => {
 
         return (
-            <section className="grid-projects projects-section">
+            <section className="max-w-5xl min-h-screen mx-auto grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-2">
                 {
-                    state.map((project) => {
-                        return (
-                            <article key={project.id}>
-                                <a href={project.url} target="_blank" rel="noreferrer" >
-                                    <Image src={`${project.photoURL}`} loading="lazy" layout="responsive" width={810} height={540} alt={project.title} />
-                                    <div className="grid-items-content">
-                                        <h5 className="headline5">{project.title}</h5>
-                                        <p>{project.description}</p>
-                                        <CategoryItems categories={project.categories} />
-                                    </div>
-                                </a>
-                            </article>
-                        )
-                    })
+                    state.sort((a, b) => b.fixed - a.fixed)
+                        .sort((a, b) => b.priority - a.priority)
+                        .map((project) => {
+                            return (
+                                <article className="w-full border rounded-md" key={project.id}>
+                                    <a href={project.url} target="_blank" rel="noreferrer" >
+                                        <picture className="w-full">
+                                            <img className="w-full" src={`${project.imageURL}`} alt={project.title} />
+                                        </picture>
+                                        <div className="grid-items-content">
+                                            <h5 className="headline5">{project.title}</h5>
+                                            <p className="line-clamp-3">{documentToReactComponents(project.description)}</p>
+                                        </div>
+                                    </a>
+                                </article>
+                            )
+                        })
                 }
             </section>
         )
@@ -63,21 +56,4 @@ export default function Projects({ projects }) {
             <Footer />
         </main>
     )
-}
-
-export const getServerSideProps = async (ctx) => {
-
-    const prisma = new PrismaClient()
-
-    const post = await prisma.projects.findMany({
-        include: {
-            categories: true
-        }
-    })
-
-    return {
-        props: {
-            projects: post
-        }
-    }
 }
