@@ -8,9 +8,9 @@ export default function Footer() {
         <footer>
             <Image src="/logo-fulltext-gray.svg" width={282} height={35} alt="logo" />
             <p>Hecho por manuel. Copyright {moment().year()} - Todos los derechos reservados.</p>
-            <div>
+            <div className="flex justify-center flex-col">
                 <ContactsLinks />
-                <SocialIcons />
+                <SocialIcons className="justify-center" />
             </div>
         </footer>
     )

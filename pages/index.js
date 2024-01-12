@@ -6,12 +6,25 @@ import Footer from '../components/Footer'
 import AvatarImage from '../public/avatar.png'
 import { IoIosArrowDown } from 'react-icons/io'
 import { MdOutlineWavingHand } from 'react-icons/md'
-import useDarkMode from '../hooks/useDarkMode'
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import ContactsForm from '../components/ContactsForm'
+import { useEffect, useState } from 'react'
 
 export default function Home() {
 
-	const [switchTheme, theme, isMounted] = useDarkMode()
+	const [projects, setProjects] = useState([])
+
+	useEffect(() => {
+		fetch('/api/projects')
+			.then((res) => res.json())
+			.then((data) => {
+				const fixedProjects = [...data].filter((project) => project.fixed).slice(0, 3)
+				setProjects(fixedProjects)
+			})
+			.catch((err) => {
+				console.log(err)
+			})
+	}, [])
 
 	const scrollVisibleArea = (selector) => {
 		let section = document.querySelector(selector);
@@ -29,71 +42,44 @@ export default function Home() {
 				<meta name="description" content="Bienvenido a mi humilde espacio" />
 				<meta property="og:image" content="/uploads/seo-featured.png" />
 			</Head>
-			<main>
-				<Navigation />
-				<section className="presentation">
+			<Navigation />
+			<main className="max-w-4xl mx-auto">
+				<section className="flex h-[calc(100vh-200px)] flex-col md:flex-row items-center">
 					<Image src={AvatarImage} width={331} height={320} alt="manuel saavedra avatar" />
-					<div className="presentation-content">
-						<h4 className="headline4 text-primary">HOLA <MdOutlineWavingHand />, SOY</h4>
-						<div>
+					<div className="flex flex-col text-center md:text-left gap-2">
+						<h4 className="flex items-center justify-center md:justify-start gap-2 text-2xl">HOLA <MdOutlineWavingHand />, SOY</h4>
+						<div className="flex flex-col gap-2">
 							<h3 className="headline3">Manuel Saavedra</h3>
 							<p>Desarrollador Frontend. Actualmente sigo aprendiendo sobre nuevas tecnologías.</p>
 						</div>
 						<SocialIcons />
 					</div>
 				</section>
-				<div className="signal">
-					<h5 className="headline5">Aquí tienes algunos proyectos que te quiero compartir.</h5>
+				<div className="flex flex-col justify-center items-center gap-4">
+					<h5 className="font-bold text-xl">Aquí tienes algunos proyectos que te quiero compartir.</h5>
 					<button onClick={() => scrollVisibleArea("#projects")}>
 						<IoIosArrowDown size={24} color="inherit" />
 					</button>
 				</div>
-				<section className="projects" id="projects">
-					<article className="projects-items">
-						<div className="items-content">
-							<h5 className="headline5">Sequentracks</h5>
-							<p>Un reproductor de secuencias de audio multitrack para músicos.</p>
-							<span className="caption">- Solo Desktop</span>
-							<a href="https://multitrackapp.netlify.app" target="_blank" rel="noreferrer">
-								<button className="primary">
-									Ver demo
-								</button>
-							</a>
-						</div>
-						<div className="items-image">
-							<Image src="/uploads/project-1.png" loading="lazy" width={587} height={390} alt="manuel saavedra avatar" />
-						</div>
-					</article>
-					<article className="projects-items">
-						<div className="items-content">
-							<h5 className="headline5">Overtime</h5>
-							<p>Simple registro de jornada laboral u horas extras para trabajadores.</p>
-							<span className="caption">- Responsive</span>
-							<a href="https://overtime.netlify.app" target="_blank" rel="noreferrer">
-								<button className="primary">
-									Ver demo
-								</button>
-							</a>
-						</div>
-						<div className="item-image">
-							<Image src="/uploads/project-2.png" loading="lazy" width={587} height={390} alt="manuel saavedra avatar" />
-						</div>
-					</article>
-					<article className="projects-items">
-						<div className="items-content">
-							<h5 className="headline5">Covid 19 Map</h5>
-							<p>Mapa de contagiados por la pandemia covid-19.</p>
-							<span className="caption">- Responsive</span>
-							<a href="https://manusaavedra.github.io/Mapa-Coronavirus/" target="_blank" rel="noreferrer">
-								<button className="primary">
-									Ver demo
-								</button>
-							</a>
-						</div>
-						<div className="item-image">
-							<Image src="/uploads/project-3.png" loading="lazy" width={587} height={390} alt="manuel saavedra avatar" />
-						</div>
-					</article>
+				<section className="pt-40 px-4" id="projects">
+					{
+						projects.map((project) => (
+							<article key={project.id} className="grid grid-cols-1 md:grid-cols-2 place-items-center">
+								<div className="order-2 md:order-1 flex justify-stretch md:justify-start flex-col gap-4 px-4">
+									<h5 className="headline5">{project.title}</h5>
+									<p className="line-clamp-2">{documentToReactComponents(project.description)}</p>
+									<a className="md:w-fit p-4 rounded-3xl bg-yellow-500 text-black font-semibold text-center" href={project.url} target="_blank" rel="noreferrer">
+										Ver demo
+									</a>
+								</div>
+								<div className="order-1 md:order-2">
+									<picture>
+										<img src={project.imageURL} width={587} height={390} alt={project.title} />
+									</picture>
+								</div>
+							</article>
+						))
+					}
 				</section>
 				<section className="skills">
 					<article className="skills-content">
@@ -113,6 +99,6 @@ export default function Home() {
 				</section>
 			</main>
 			<Footer />
-		</div>
+		</div >
 	)
 }
