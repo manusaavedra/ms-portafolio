@@ -1,5 +1,4 @@
 export default async function handler(req, res) {
-
     const contentful = require('contentful')
 
     const client = contentful.createClient({
