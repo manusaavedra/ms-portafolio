@@ -7,6 +7,7 @@ import SearchInput from '../../components/SearchInput'
 import SpotifyPlaylist from '../../components/SpotifyPlayList'
 import { getAllFilesMetadata } from "../../services/mdx"
 import moment from '../../services/moment'
+import Footer from '../../components/Footer'
 
 export default function Blog({ posts }) {
     return (
@@ -17,26 +18,26 @@ export default function Blog({ posts }) {
                 <meta property="og:image" content="/uploads/seo-featured.png" />
             </Head>
             <Navigation />
-            <SearchInput />
-            <main>
-                <section className="posts">
-                    <div className="flatItemsPost">
-                        <div className="titles-container">
-                            <h5 className="headline5 text-primary">Mis posts</h5>
+            <main className="relative py-4 px-4">
+                <section className="w-full grid grid-cols-1 md:grid-cols-[1fr,320px] gap-4">
+                    <div>
+                        <SearchInput />
+                        <div>
+                            <h5 className="font-bold text-2xl">Mis posts</h5>
                         </div>
                         <ul>
                             {
                                 posts.map((post) => (
-                                    <li key={post.title}>
+                                    <li className="flex overflow-hidden items-center gap-4 border-b py-2" key={post.title}>
                                         <div>
                                             <Image src={`/logo-thumbnail-${post.tags[0]}.svg`} width={50} height={50} alt={post.title} />
                                         </div>
                                         <Link href={`/blog/${post.slug}`} passHref>
-                                            <a>
-                                                <h5 className="headline5">{post.title}</h5>
-                                                <div className="metadata">
+                                            <a className="overflow-hidden block">
+                                                <h5 className="text-xl font-semibold truncate text-ellipsis">{post.title}</h5>
+                                                <div className="flex font-normal items-center gap-2">
                                                     <CgCalendar />
-                                                    <span className="text-metadata">
+                                                    <span className="font-normal">
                                                         {moment(post.publishedAt).format("DD MMM YYYY")}
                                                     </span>
                                                 </div>
@@ -47,18 +48,15 @@ export default function Blog({ posts }) {
                             }
                         </ul>
                     </div>
-                    <div className="sidebar hidden-sm">
-                        <div>
-                            <h5>Podcasts Favoritos:</h5>
+                    <div className="md:order-2">
+                        <div className="sticky top-12">
+                            <h5 className="font-semibold">Podcasts Favoritos:</h5>
                             <SpotifyPlaylist />
-                        </div>
-                        <div>
-                            <h5>Proyectos recientes</h5>
-
                         </div>
                     </div>
                 </section>
             </main>
+            <Footer />
         </div>
     )
 }

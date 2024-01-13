@@ -1,20 +1,16 @@
 
 import { createAutocomplete } from '@algolia/autocomplete-core'
-import { cloneElement, useMemo, useRef, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 
-const AutocompleteItems = ({ title, description, thumbnail, slug, tag }) => {
+const AutocompleteItems = ({ title, description, slug }) => {
     return (
         <li>
             <Link href={`/blog/${slug}`} passHref>
-                <a>
-                    <div className="thumbnail">
-                        <Image src={thumbnail} width={200} height={100} layout="intrinsic" alt={title} />
-                    </div>
-                    <div className="content">
-                        <h4> {title} </h4>
-                        <p> {description} </p>
+                <a className="flex items-center gap-2 border-b">
+                    <div className="overflow-hidden px-4">
+                        <h4 className="font-semibold text-xl"> {title} </h4>
+                        <p className="text-ellipsis"> {description} </p>
                     </div>
                 </a>
             </Link>
@@ -57,23 +53,22 @@ export default function SearchInput({ props }) {
     })
 
     return (
-        <form ref={formRef} className="search-form" {...formProps} >
-            <div className="form-inputs">
-                <input ref={inputRef} type="text" {...inputProps} />
+        <form className="sticky top-12 py-2 z-[1] bg-neutral-50" ref={formRef} {...formProps} >
+            <div>
+                <input className="w-full" ref={inputRef} {...inputProps} />
             </div>
-            <div className="autocomplete">
+            <div>
                 {
                     autocompleteState.isOpen && (
-                        <div className="autocomplete-panel" ref={panelRef} {...autocomplete.getPanelProps()}>
+                        <div className="bg-gray-100 mt-2 py-2 rounded-md w-full overflow-hidden" ref={panelRef} {...autocomplete.getPanelProps()}>
                             {
                                 autocompleteState.collections.map((collection, index) => {
                                     const { items } = collection
-                                    console.log(collection)
                                     return (
                                         <section key={`section-${index}`}>
                                             {
                                                 items.length > 0 && (
-                                                    <ul {...autocomplete.getListProps()}>
+                                                    <ul className="flex flex-col gap-2" {...autocomplete.getListProps()}>
                                                         {
                                                             items.map((item, index) => (
                                                                 <AutocompleteItems key={`${item.title}-${index}`} {...item} />

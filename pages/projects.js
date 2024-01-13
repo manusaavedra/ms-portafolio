@@ -20,7 +20,7 @@ export default function Projects() {
     const ProjectsItems = () => {
 
         return (
-            <section className="max-w-5xl min-h-screen mx-auto grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-2">
+            <section className="max-w-5xl py-14 min-h-screen mx-auto grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-2">
                 {
                     state.sort((a, b) => b.fixed - a.fixed)
                         .sort((a, b) => b.priority - a.priority)
@@ -31,8 +31,8 @@ export default function Projects() {
                                         <picture className="w-full">
                                             <img className="w-full" src={`${project.imageURL}`} alt={project.title} />
                                         </picture>
-                                        <div className="grid-items-content">
-                                            <h5 className="headline5">{project.title}</h5>
+                                        <div className="p-4">
+                                            <h5 className="text-2xl font-bold">{project.title}</h5>
                                             <p className="line-clamp-3">{documentToReactComponents(project.description)}</p>
                                         </div>
                                     </a>

@@ -1,71 +1,59 @@
-import { useRef } from "react"
-import useInput from "../hooks/useInput"
-import Modal from "./Modal"
+import { useRef, useState } from "react"
+import Swal from 'sweetalert2'
 import ContactsLinks from "./ContactsLinks"
 
 export default function ContactsForm() {
-
-    const {Dialog, openDialog} = Modal()
-
     const formRef = useRef()
 
-    const names = useInput("")
-    const email = useInput("")
-    const message = useInput("")
-
     const resetForm = () => {
-        names.reset()
-        email.reset()
-        message.reset()
+        formRef.current.reset()
     }
 
     const handleSubmit = async (e) => {
-        
         e.preventDefault()
 
-        if (names.isEmpty() || email.isEmpty() || message.isEmpty()) {
-            return
-        }
+        const form = Object.fromEntries(new FormData(e.target))
 
-        const data = {
-            email: email.value,
-            message: `<b>${names.value}:</b><br><br><p>${message.value}</p>`
-        }
+        if (Object.values(form).includes('')) return
 
-        console.log(JSON.stringify(data))
-        
         const res = await fetch('/api/contacts', {
             method: 'POST',
-            body: JSON.stringify(data),
+            body: JSON.stringify(form),
             headers: {
                 "Content-Type": "application/json"
             }
         })
 
-        if (res.status === 200) {
-            openDialog()
+        if (res.ok) {
+            resetForm()
+            Swal.fire({
+                icon: "success",
+                animation: false,
+                text: 'Genial, ya he recibido tu mensaje!, en cuanto pueda lo miro. Gracias 😊',
+                showConfirmButton: false,
+            })
         }
+
+
     }
 
     return (
-        <form ref={formRef} onSubmit={handleSubmit}>
+        <>
             <ContactsLinks />
-            <div className="form-inputs">
-                <input type="text" onChange={names.onChange} value={names.value} placeholder="¿Cómo te llamas?" />
-            </div>
-            <div className="form-inputs">
-                <input type="email" onChange={email.onChange} value={email.value} placeholder="Escríbe tu email" />
-            </div>
-            <div className="form-inputs">
-                <textarea onChange={message.onChange} value={message.value} placeholder="¿Qué quieres decirme?" cols="30" rows="10" />
-            </div>
-            <div className="form-inputs">
-                <button type="submit" className="primary">Enviar</button>
-            </div>
-            <Dialog
-                onClosed={resetForm}
-                content={`Gracias ${names.value}, el mensaje se envio correctamente`}
-            />
-        </form>
+            <form className="max-w-md w-full flex flex-col items-stretch gap-4" ref={formRef} onSubmit={handleSubmit}>
+                <div>
+                    <input className="w-full" name="names" type="text" placeholder="¿Cómo te llamas?" />
+                </div>
+                <div>
+                    <input className="w-full" name="email" type="email" placeholder="Escríbe tu email" />
+                </div>
+                <div>
+                    <textarea className="w-full" name="message" placeholder="¿Qué quieres decirme?" cols="30" rows="10" />
+                </div>
+                <div>
+                    <button className="w-full bg-yellow-500" type="submit">Enviar</button>
+                </div>
+            </form>
+        </>
     )
 }
