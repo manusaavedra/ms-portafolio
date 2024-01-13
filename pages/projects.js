@@ -45,15 +45,17 @@ export default function Projects() {
     }
 
     return (
-        <main>
+        <>
             <Head>
                 <title>Manuel Saavedra - Proyectos</title>
                 <meta name="description" content="Estos son algunos proyectos que he querido compatir con todos." />
                 <meta property="og:image" content="/uploads/seo-projects.png" />
             </Head>
             <Navigation />
-            <ProjectsItems />
+            <main className="px-4">
+                <ProjectsItems />
+            </main>
             <Footer />
-        </main>
+        </>
     )
 }

@@ -56,7 +56,7 @@ export default function Home() {
 					</div>
 				</section>
 				<div className="flex flex-col justify-center items-center gap-4">
-					<h5 className="text-xl font-normal text-center">Aquí tienes algunos proyectos que te quiero compartir.</h5>
+					<h5 className="text-xl font-normal text-center">Algunos de mis proyectos.</h5>
 					<button onClick={() => scrollVisibleArea("#projects")}>
 						<IoIosArrowDown size={24} color="inherit" />
 					</button>
